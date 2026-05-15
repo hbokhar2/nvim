@@ -7,23 +7,23 @@
 --vim.api.nvim_set_hl(0, 'CursorLineNr', {bg = '#000000'})
 
 --Transparent Background
-local transparent_groups = {
-	"Normal",
-	"NormalNC",
-	"NormalFloat",
-	"LineNr",
-	"CursorLineNr",
-	"SignColumn",
-	"StatusLine",
-	"StatusLineNC",
-	"EndOfBuffer",
-	"FloatBorder",
-	"WinSeparator",
-}
+--local transparent_groups = {
+--	"Normal",
+--	"NormalNC",
+--	"NormalFloat",
+--	"LineNr",
+--	"CursorLineNr",
+--	"SignColumn",
+--	"StatusLine",
+--	"StatusLineNC",
+--	"EndOfBuffer",
+--	"FloatBorder",
+--	"WinSeparator",
+--}
 
-for _, group in ipairs(transparent_groups) do
-	vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-end
+--for _, group in ipairs(transparent_groups) do
+	--vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
+--end
 
 vim.opt.tabstop = 8
 vim.opt.shiftwidth = 8
