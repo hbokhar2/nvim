@@ -1,7 +1,8 @@
 local config = {
 	cmd = {
 		'clangd',
-		'--query-driver=/usr/bin/gcc,/usr/bin/g++,/usr/bin/c++',
+		"--enable-config",
+		"--query-driver=/nix/store/*/bin/*",
 		'--background-index',
 		'--clang-tidy',
 		'--completion-style=detailed'

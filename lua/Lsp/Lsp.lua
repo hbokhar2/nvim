@@ -1,6 +1,7 @@
 require('Lsp.lua_lsp')
 require('Lsp.c_cxx_lsp')
 require('Lsp.py_lsp')
+require('Lsp.cmake_lsp')
 
 -- Configure diagnostics with modern signs
 vim.diagnostic.config({

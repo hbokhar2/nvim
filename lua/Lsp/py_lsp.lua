@@ -1,27 +1,35 @@
-local python_config = {
-    cmd = { "pylsp" },
+local config = {
 
-    filetypes = { "python" },
+	cmd = { "pyright-langserver", "--stdio" },
 
-    root_markers = {
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        "requirements.txt",
-        ".git",
-    },
+	filetypes = { "python" },
 
-    settings = {
-        pylsp = {
-            plugins = {
-                pyflakes = { enabled = true },
-                pycodestyle = { enabled = true },
-                autopep8 = { enabled = true },
-                jedi_completion = { fuzzy = true },
-            }
-        }
-    }
+	root_dir = function(bufnr, on_dir)
+		local filename = vim.api.nvim_buf_get_name(bufnr)
+		local root = vim.fs.root(filename, {
+			"pyproject.toml",
+			"setup.py",
+			"setup.cfg",
+			"requirements.txt",
+			"Pipfile",
+			".git",
+		})
+		on_dir(root or vim.fs.dirname(filename))
+	end,
+
+	settings = {
+		python = {
+			analysis = {
+				autoImportCompletions = true,
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "workspace",
+				typeCheckingMode = "basic",
+			},
+		},
+	},
+
 }
 
-vim.lsp.config('pylsp', python_config)
-vim.lsp.enable('pylsp')
+vim.lsp.config('pyright', config)
+vim.lsp.enable('pyright')
